@@ -1,0 +1,41 @@
+
+@model ProductViewModel
+@*@{
+    Layout="_Layoult";//indexcshtml şuan _Layoutl kullandı diyoruz
+} *@
+@{//buranın layoultla alakası yok
+    var popularClass=Model.Products.Count>2?"popular":""; 
+    var products=Model.Products;
+}
+
+    
+
+        <div class="row">
+            <div class="col-md-3">
+                @await Component.InvokeAsync("Categories") @*viewcmponent klasör oluşturduk içine categori viewcomp yazdık bu category indexte ekleme falan işlemi vardıya onu tutacak. 
+                share component clasörü ekedim onada category adında bir clasöt ve deafult cshtml ekledim bunada view işlemimi yazdık artık bu metodla Categories i çağırdığımda bana indexten alır vievler ve getirir. *@
+            </div>
+            <div class="col-md-9">
+                @if(products.Count ==0 )
+                {
+                @await Html.PartialAsync("_noproduct")
+                }
+                else
+                {
+                    <div class="row">                  
+                        @foreach (var product in products)
+                        {    
+                        <div class="col-md-3">
+                            @await Html.PartialAsync("_product",product) @* dinamik olduğu için obje bejler bende product u veririm*@
+                            @* Listeden gelen her product objesini _productcshtml e gönderiyoruz ve gönderdiğimiz obje product prodyccshtml tarafından karşılanıyor ve karşılanan bilgi içerinden modelname desc yazdırılır *@
+                        </div>       
+                        
+                        }   
+                    </div>
+                }
+                </div>
+
+                    </div>   
+
+
+

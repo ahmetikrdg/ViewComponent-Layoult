@@ -1,0 +1,15 @@
+
+@* @{
+    Layout="_Layoult";//indexcshtml şuan _Layoutl kullandı diyoruz
+}buna gerek kalmadı views içinde _viewstart sayfasında layoult tanımladım onu bütün sayfalar kullanır
+*@
+
+
+<div class="row">
+            <div class="col-md-3">
+                @await Component.InvokeAsync("Categories")
+            </div>
+            <div class="col-md-9">
+                Abotuh
+            </div>
+             </div>
